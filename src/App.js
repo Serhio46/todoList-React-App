@@ -34,19 +34,20 @@ class App extends React.Component {
   };
 
   addTasks = (task) => {
-    this.setState(state => {
-      let { tasks } = state;
-      tasks.push({
-        id: tasks.length !== 0 ? tasks.length : 0,
-        title: task,
-        done: false,
-      });
-      return tasks;
-    })
+
+    let newTasks = this.state.tasks.slice();
+    newTasks.push({
+      id: newTasks.length !== 0 ? newTasks.length : 0,
+      title: task,
+      done: false,
+    });
+    this.setState(
+      { tasks: newTasks }
+    )
   }
 
   render() {
-
+    console.log(this.state);
     const { tasks } = this.state;
     console.log(tasks);
 
